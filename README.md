@@ -9,13 +9,13 @@ A modern library management system with admin authentication, book management, a
 ## Features
 
 ✅ **Admin Management**  
-- Email-based authentication with custom user model  
+- Custom admin user model with email authentication  
 - Profile management with bio field  
-- JWT token authentication  
+- JWT token-based authentication  
 
 ✅ **Book Management**  
-- CRUD operations for books  
-- Search functionality  
+- CRUD operations for books with author/published date tracking  
+- Search functionality with template views  
 - Admin dashboard with Bootstrap UI  
 
 ✅ **API Access**  
@@ -29,74 +29,59 @@ A modern library management system with admin authentication, book management, a
 - **Database**: MySQL 8.0 (Docker container)  
 - **Auth**: Simple JWT, Django Allauth  
 - **Frontend**: Bootstrap 5.3  
+- **Infrastructure**: Docker, Nginx  
 
 ## Getting Started
 
 ### Prerequisites
-- Docker Desktop (for MySQL container)
+- Docker Desktop
 - Python 3.11+
 - MySQL client (optional)
 
 ### Setup Instructions
 
-1. **Clone the repository**  
+1. **Clone repository**
    \`\`\`bash
-   git clone https://github.com/your-repo/library-management.git
-   cd library-management
+   git clone https://github.com/mohityadavbkbiet/library_mg_system.git
+   cd library_mg_system
    \`\`\`
 
-2. **Set up virtual environment**  
+2. **Set up virtual environment**
    \`\`\`bash
    python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   source venv/bin/activate  # Windows: venv\Scripts\activate
    \`\`\`
 
-3. **Install dependencies**  
+3. **Install dependencies**
    \`\`\`bash
    pip install -r requirements.txt
    \`\`\`
 
-4. **Start MySQL container**  
+4. **Start MySQL container**
    \`\`\`bash
    docker compose up --build -d
    \`\`\`
 
-5. **Database configuration**  
-   *settings.py already configured to connect to Docker MySQL instance:*
-   \`\`\`python
-   DATABASES = {
-       'default': {
-           'ENGINE': 'django.db.backends.mysql',
-           'NAME': 'my_app_db',
-           'USER': 'my_app_user',
-           'PASSWORD': 'my_app_password',
-           'HOST': '127.0.0.1',
-           'PORT': '3306',
-       }
-   }
-   \`\`\`
-
-6. **Run migrations**  
+5. **Run database migrations**
    \`\`\`bash
    python manage.py makemigrations
    python manage.py migrate
    \`\`\`
 
-7. **Create admin user**  
+6. **Create admin user**
    \`\`\`bash
    python manage.py createsuperuser
    \`\`\`
 
-8. **Start development server**  
+7. **Start development server**
    \`\`\`bash
    python manage.py runserver
    \`\`\`
 
-9. **Access the application**  
-   Open browser at:  
-   - Admin panel: http://localhost:8000/admin  
-   - API documentation: http://localhost:8000/api/  
-   - Frontend: http://localhost:8000  
+### Access Application
+- Admin panel: http://localhost:8000/admin  
+- API documentation: http://localhost:8000/api/  
+- Frontend: http://localhost:8000  
 
 ## API Endpoints
 
@@ -112,32 +97,39 @@ A modern library management system with admin authentication, book management, a
 ## Project Structure
 
 \`\`\`
-library-management/
-├── library/               # Main app
+library_mg_system/
+├── library/               # Core application
 │   ├── migrations/        # Database migrations
 │   ├── static/            # CSS/JS assets
 │   ├── templates/         # HTML templates
 │   ├── admin.py           # Admin configurations
 │   ├── models.py          # Database models
 │   └── views.py           # View logic
-├── docker-compose.yml     # MySQL container configuration
+├── docker-compose.yml     # Container configuration
 └── requirements.txt       # Python dependencies
+\`\`\`
+
+## Testing
+
+Run test suite:
+\`\`\`bash
+python manage.py test
 \`\`\`
 
 ## Security Considerations
 
-1. **Production readiness**  
-   - Set \`DEBUG=False\` in production [[2]]
-   - Use strong database credentials [[5]]
-   - Store secrets in \`.env\` file [[7]]
+1. **Production Setup**  
+   - Set \`DEBUG=False\` in production [[2]]  
+   - Use strong database credentials [[5]]  
+   - Store secrets in \`.env\` file [[7]]  
 
-2. **Database**  
-   - MySQL container uses healthchecks for stability
-   - Data persistence via Docker volumes
+2. **Authentication**  
+   - JWT tokens with 30-minute expiration  
+   - Password hashing with PBKDF2  
 
-3. **Authentication**  
-   - JWT tokens with 30-minute expiration
-   - Password hashing with PBKDF2
+3. **Database**  
+   - MySQL container with healthchecks  
+   - Data persistence via Docker volumes  
 
 ## License
 
