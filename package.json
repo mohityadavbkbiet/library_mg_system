@@ -1,0 +1,14 @@
+{
+  "name": "library-backend",
+  "version": "1.0.0",
+  "description": "Library Management System using Django and Django REST Framework with JWT authentication and CRUD operations on book records.",
+  "main": "index.js",
+  "scripts": {
+    "start": "source venv/bin/activate && python manage.py runserver",
+    "migrate": "source venv/bin/activate && python manage.py makemigrations && python manage.py migrate",
+    "test": "source venv/bin/activate && python manage.py test"
+  },
+  "keywords": ["Django", "REST API", "Library Management", "JWT Authentication"],
+  "author": "Mohit Yadav",
+  "license": "MIT"
+}

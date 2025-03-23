@@ -1,0 +1,11 @@
+{% extends "library/base.html" %}
+{% block content %}
+<div class="container">
+  <h1 class="my-4">My Profile</h1>
+  <p><strong>Email:</strong> {{ user.email }}</p>
+  <p><strong>First Name:</strong> {{ user.first_name }}</p>
+  <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+  <p><strong>Bio:</strong> {{ user.bio }}</p>
+  <a href="{% url 'account-update' %}" class="btn btn-primary">Edit Profile</a>
+</div>
+{% endblock %}

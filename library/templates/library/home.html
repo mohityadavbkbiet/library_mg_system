@@ -1,0 +1,11 @@
+{% extends "library/base.html" %}
+{% block content %}
+<!-- Hero Section -->
+<header class="bg-primary text-white text-center py-5">
+  <div class="container">
+    <h1>Welcome to the Library Management System</h1>
+    <p class="lead">Manage your books, students, and admin with ease!</p>
+    <a href="{% url 'book-list' %}" class="btn btn-light btn-lg">View Books</a>
+  </div>
+</header>
+{% endblock %}
